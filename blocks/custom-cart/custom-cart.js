@@ -8,13 +8,13 @@ import MiniCart from '@dropins/storefront-cart/containers/MiniCart.js';
 
 
 //Commented GraphQL and Mesh API endpoint as it is pending
-// mesh.setEndpoint('https://<graphql-service-endpoint>/graphql');
+mesh.setEndpoint('https://<graphql-service-endpoint>/graphql');
 
 // Set the customer token. This method is specific to @dropins/storefront-cart package.
-// pkg.setFetchGraphQlHeader('commerce-auth', '<token>');
+pkg.setFetchGraphQlHeader('commerce-auth', '123456789');
 
 // Set store code header. This method is specific to the @dropins/tools package.
-// mesh.setFetchGraphQlHeader('store', '<default>');
+mesh.setFetchGraphQlHeader('store', 'dummyHeader');
 
 provider.render(Cart, {
   routeProduct: (item) => {

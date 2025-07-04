@@ -10,30 +10,31 @@
     }
 </script>
 
-<script type="importmap">
-    {
-        "imports": {
-            "@dropins/storefront-account/": "/scripts/__dropins__/storefront-account/",
-            "@dropins/storefront-auth/": "/scripts/__dropins__/storefront-auth/",
-            "@dropins/storefront-cart/": "https://cdn.jsdelivr.net/npm/@dropins/storefront-cart@latest",
-            "@dropins/storefront-checkout/": "/scripts/__dropins__/storefront-checkout/",
-            "@dropins/storefront-order/": "/scripts/__dropins__/storefront-order/",
-            "@dropins/storefront-payment-services/": "/scripts/__dropins__/storefront-payment-services/",
-            "@dropins/storefront-pdp/": "/scripts/__dropins__/storefront-pdp/",
-            "@dropins/tools/": "https://cdn.jsdelivr.net/npm/@dropins/tools@latest"
-        }
-    }
-</script>
+<script src="https://cdn.jsdelivr.net/npm/@dropins/tools@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/@dropins/storefront-cart@latest"></script>
 
 <script type="module">
   initializers.register(pkg.initialize);
   window.addEventListener('load', initializers.mount);
 </script>
 
-<link rel="stylesheet" href="/styles/styles.css" />
+<script type="importmap">
+    {
+        "imports": {
+            "@dropins/storefront-account/": "/scripts/__dropins__/storefront-account/",
+            "@dropins/storefront-auth/": "/scripts/__dropins__/storefront-auth/",
+            "@dropins/storefront-cart/": "/scripts/__dropins__/storefront-cart/",
+            "@dropins/storefront-checkout/": "/scripts/__dropins__/storefront-checkout/",
+            "@dropins/storefront-order/": "/scripts/__dropins__/storefront-order/",
+            "@dropins/storefront-payment-services/": "/scripts/__dropins__/storefront-payment-services/",
+            "@dropins/storefront-pdp/": "/scripts/__dropins__/storefront-pdp/",
+            "@dropins/tools/": "/scripts/__dropins__/tools/"
+        }
+    }
+</script>
 
-<script src="https://cdn.jsdelivr.net/npm/@dropins/tools@latest"></script>
-<script src="https://cdn.jsdelivr.net/npm/@dropins/storefront-cart@latest"></script>
+
+<link rel="stylesheet" href="/styles/styles.css" />
 
 <script src="/scripts/aem.js" type="module"></script>
 <script src="/scripts/scripts.js" type="module"></script>
