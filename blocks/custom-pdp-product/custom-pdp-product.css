@@ -1,0 +1,13 @@
+.custom-pdp-product-banner{
+    background-color: black;
+    border: 2px dashed white;
+    padding: 12px;
+    margin-top: 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: white;
+}
+
+.custom-pdp-product-banner p{
+    margin: 4px 0;
+}

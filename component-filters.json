@@ -24,7 +24,8 @@
       "fragment",
       "product-teaser",
       "product-recommendations",
-      "custom-cart"
+      "custom-cart",
+      "custom-pdp-product"
     ]
   },
   {
@@ -40,7 +41,8 @@
       "fragment",
       "product-teaser",
       "product-recommendations",
-      "custom-cart"
+      "custom-cart",
+      "custom-pdp-product"
     ]
   },
   {
@@ -76,7 +78,8 @@
       "product-details",
       "product-teaser",
       "product-recommendations",
-      "custom-cart"
+      "custom-cart",
+      "custom-pdp-product"
     ]
   },
   {
