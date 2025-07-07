@@ -19,4 +19,4 @@ function createProduct($block, props = {}){
     $block.appendChild(wrapper);
 }
 
-decorate('product', createProduct);
+export default decorate('product', createProduct);
