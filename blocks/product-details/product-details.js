@@ -30,6 +30,7 @@ import { rootLink } from '../../scripts/scripts.js';
 
 export default async function decorate(block) {
   // eslint-disable-next-line no-underscore-dangle
+  console.log("Product details page");
   const product = events._lastEvent?.['pdp/data']?.payload ?? null;
   const labels = await fetchPlaceholders();
 
