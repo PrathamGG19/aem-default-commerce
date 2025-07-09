@@ -1,8 +1,7 @@
 {
   "public": {
     "default": {
-      "commerce-core-endpoint": "https://www.aemshop.net/graphql",
-      "commerce-endpoint": "https://www.aemshop.net/cs-graphql",
+      "commerce-core-endpoint": "https://test-t6dnbai-wovgsanaa66gw.us-4.magentosite.cloud/graphql",
       "headers": {
         "all": {
           "Store": "default"
