@@ -16,9 +16,9 @@ export default async function decorate(block) {
 
   const storeDetails = {
     environmentId: getConfigValue('headers.cs.Magento-Environment-Id'),
-    environmentType: (getConfigValue('commerce-endpoint')).includes('sandbox') ? 'testing' : '',
+    environmentType: (getConfigValue('commerce-plp-endpoint')).includes('sandbox') ? 'testing' : '',
     apiKey: getConfigValue('headers.cs.x-api-key'),
-    apiUrl: getConfigValue('commerce-endpoint'),
+    apiUrl: getConfigValue('commerce-plp-endpoint'),
     websiteCode: getConfigValue('headers.cs.Magento-Website-Code'),
     storeCode: getConfigValue('headers.cs.Magento-Store-Code'),
     storeViewCode: getConfigValue('headers.cs.Magento-Store-View-Code'),
