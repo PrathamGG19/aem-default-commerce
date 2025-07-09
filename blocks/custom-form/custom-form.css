@@ -1,0 +1,26 @@
+.product-info form label {
+  display: block;
+  margin-bottom: 12px;
+}
+ 
+.product-info input {
+  width: 100%;
+  padding: 6px;
+  margin-top: 4px;
+}
+ 
+.product-info button {
+  margin-top: 10px;
+  padding: 8px 14px;
+  background: #0073e6;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+ 
+.product-info pre {
+  margin-top: 16px;
+  background: #f5f5f5;
+  padding: 1em;
+  border-radius: 4px;
+}
