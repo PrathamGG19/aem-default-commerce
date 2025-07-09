@@ -2,6 +2,7 @@
   "public": {
     "default": {
       "commerce-core-endpoint": "https://test-t6dnbai-wovgsanaa66gw.us-4.magentosite.cloud/graphql",
+      "commerce-endpoint": "https://test-t6dnbai-wovgsanaa66gw.us-4.magentosite.cloud/graphql",
       "headers": {
         "all": {
           "Store": "default"

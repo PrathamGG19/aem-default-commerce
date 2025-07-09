@@ -35,7 +35,7 @@ export default async function decorate(block) {
 document.addEventListener("load", async function(){
     try{
         const res = await fetch(API,{
-        method: 'GET',
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
