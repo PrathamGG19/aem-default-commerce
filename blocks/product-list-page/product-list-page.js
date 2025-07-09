@@ -9,6 +9,11 @@ export default async function decorate(block) {
   const { category, urlpath, type } = readBlockConfig(block);
   block.textContent = '';
 
+  console.log("CONFIG VALUES -");
+  console.log(getConfigValue('commerce-endpoint'))
+  console.log("------------------------")
+  console.log(getConfigValue());
+
   const storeDetails = {
     environmentId: getConfigValue('headers.cs.Magento-Environment-Id'),
     environmentType: (getConfigValue('commerce-endpoint')).includes('sandbox') ? 'testing' : '',
