@@ -89,6 +89,8 @@ import '../../scripts/initializers/account.js';
 import '../../scripts/initializers/checkout.js';
 import '../../scripts/initializers/order.js';
 
+document.cookie = "DROPIN__CART__CART-ID=xEd9DiX2zdJV7yo1K7AUb1q9CYw4jijj";
+
 function createMetaTag(property, content, type) {
   if (!property || !type) {
     return;
@@ -124,7 +126,7 @@ function setMetaTags(dropin) {
 
 export default async function decorate(block) {
   setMetaTags('Checkout');
-  document.title = 'Checkout';
+  document.title = 'Create Shipment';
 
   events.on('order/placed', () => {
     setMetaTags('Order Confirmation');
