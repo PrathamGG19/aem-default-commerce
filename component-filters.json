@@ -29,7 +29,8 @@
       "custom-form",
       "custom-products",
       "commerce-cart",
-      "commerce-checkout"
+      "commerce-checkout",
+      "custom-commerce-checkout"
     ]
   },
   {
