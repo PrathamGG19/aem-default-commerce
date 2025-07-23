@@ -30,7 +30,8 @@
       "custom-products",
       "commerce-cart",
       "commerce-checkout",
-      "custom-input"
+      "custom-input",
+      "custom-shipment"
     ]
   },
   {
