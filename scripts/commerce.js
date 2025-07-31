@@ -120,9 +120,13 @@ export async function commerceEndpointWithQueryParams() {
 /* Common functionality */
 
 export async function performCatalogServiceQuery(query, variables) {
+  console.log("performCatalogServiceQuery");
+  console.log("query -", query);
   const headers = {
     ...(getHeaders('cs')),
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/',
+    'accessToken' :  localStorage.getItem("accessToken"),
+    'idaToken': localStorage.getItem("idaToken"),
   };
 
   const apiCall = await commerceEndpointWithQueryParams();
