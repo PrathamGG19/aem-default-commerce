@@ -112,10 +112,25 @@ function getHeaders(scope) {
     throw new Error('Configuration not initialized. Call initializeConfig() first.');
   }
   const headers = rootConfig.headers ?? {};
-  return {
-    ...headers.all ?? {},
-    ...headers[scope] ?? {},
-  };
+  console.log("headers");
+ // console.log(localStorage.getItem("accessToken"));
+ // console.log(localStorage.getItem("idaToken"));
+
+  if(localStorage.getItem("accessToken") && localStorage.getItem("idToken")) {
+    headers.accessToken = localStorage.getItem("accessToken") || "";
+    headers.idToken = localStorage.getItem("idToken") || "";
+  }
+ console.log("headers");
+ console.log(headers);
+
+    return {
+      ...(headers.all || headers[scope]) ?? {
+        "access_token": headers.accessToken,
+        "id_token": headers.idToken,     
+      },
+      ...(headers.all ?? {"access_token": headers.accessToken,}),
+      ...(headers[scope] ?? {"access_token": headers.accessToken, "id_token": headers.idToken}),
+    };
 }
 
 /**
@@ -177,6 +192,21 @@ async function getConfigFromSession() {
     }
     configJSON = await configJSON.json();
     configJSON[':expiry'] = Math.round(Date.now() / 1000) + 7200;
+    console.log("Config");
+    console.log(configJSON);
+    console.log(localStorage.getItem("accessToken"));
+    console.log(localStorage.getItem("idToken"));
+    
+    let accessToken, idToken;
+
+    if(localStorage.getItem("accessToken") && localStorage.getItem("idToken")) {
+      accessToken = localStorage.getItem("accessToken") || "";
+      idToken = localStorage.getItem("idToken") || "";
+      configJSON.public.default.headers.accessToken = accessToken;
+      configJSON.public.default.headers.idToken = idToken;
+    }
+    console.log("configJSON after ");
+    console.log(configJSON);
     window.sessionStorage.setItem('config', JSON.stringify(configJSON));
     return configJSON;
   }
