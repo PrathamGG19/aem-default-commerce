@@ -1,5 +1,6 @@
 /* eslint-disable import/no-cycle */
 import { deepmerge } from '@dropins/tools/lib.js';
+import {token, customerToken} from '../../scripts/auth.js';
 
 // Private state
 let config = null;
@@ -40,6 +41,7 @@ function getValue(obj, key) {
 function getCookie(cookieName) {
   const cookies = document.cookie.split(';');
   let foundValue;
+  console.log("Cookies:", cookies);
 
   cookies.forEach((cookie) => {
     const [name, value] = cookie.trim().split('=');
@@ -108,29 +110,61 @@ function isMultistore() {
  * @returns {Object} - The headers.
  */
 function getHeaders(scope) {
+  console.log("getHeaders called with scope:", scope);
   if (!rootConfig) {
     throw new Error('Configuration not initialized. Call initializeConfig() first.');
   }
   const headers = rootConfig.headers ?? {};
-  console.log("headers");
+  console.log("headers  ");
  // console.log(localStorage.getItem("accessToken"));
  // console.log(localStorage.getItem("idaToken"));
 
-  if(localStorage.getItem("accessToken") && localStorage.getItem("idToken")) {
-    headers.accessToken = localStorage.getItem("accessToken") || "";
-    headers.idToken = localStorage.getItem("idToken") || "";
-  }
- console.log("headers");
  console.log(headers);
+ //console.log(idToken);
 
-    return {
+ if(token?.accessToken && token?.idToken) {
+   headers.accessToken = token.accessToken;
+   headers.idToken = token.idToken;
+ }
+
+ if(customerToken) {
+  console.log("Customer Token:", customerToken);
+   headers.customer_token = customerToken;
+ }
+
+//  console.log("Cookie:", getCookie('customer_token'));
+
+//  if(getCookie('customer_token')) {
+//    headers.customer_token = getCookie('customer_token');    
+//  }
+
+  // if(localStorage.getItem("accessToken") && localStorage.getItem("idToken")) {
+  //   headers.accessToken = localStorage.getItem("accessToken") || "";
+  //   headers.idToken = localStorage.getItem("idToken") || "";
+  // }
+
+  console.log("Headers after adding accessToken and idToken:", headers);
+
+  if (headers.customer_token) {
+    console.log("Headers customer token")
+      return {
+        ...(headers.all || headers[scope]) ?? {
+        "customer_token": headers.customer_token,
+      },
+      ...(headers.all ?? {}),
+      ...(headers[scope] ?? {"customer_token": headers.customer_token}),
+      };
+    } else {
+      console.log(" else Headers customer token");
+     return {
       ...(headers.all || headers[scope]) ?? {
         "access_token": headers.accessToken,
-        "id_token": headers.idToken,     
+        "id_token": headers.idToken,
       },
-      ...(headers.all ?? {"access_token": headers.accessToken,}),
+      ...(headers.all ?? {}),
       ...(headers[scope] ?? {"access_token": headers.accessToken, "id_token": headers.idToken}),
-    };
+    }; 
+    }
 }
 
 /**
@@ -192,21 +226,21 @@ async function getConfigFromSession() {
     }
     configJSON = await configJSON.json();
     configJSON[':expiry'] = Math.round(Date.now() / 1000) + 7200;
-    console.log("Config");
-    console.log(configJSON);
-    console.log(localStorage.getItem("accessToken"));
-    console.log(localStorage.getItem("idToken"));
+    // console.log("Config");
+    // console.log(configJSON);
+    // console.log(localStorage.getItem("accessToken"));
+    // console.log(localStorage.getItem("idToken"));
     
     let accessToken, idToken;
 
-    if(localStorage.getItem("accessToken") && localStorage.getItem("idToken")) {
-      accessToken = localStorage.getItem("accessToken") || "";
-      idToken = localStorage.getItem("idToken") || "";
-      configJSON.public.default.headers.accessToken = accessToken;
-      configJSON.public.default.headers.idToken = idToken;
-    }
-    console.log("configJSON after ");
-    console.log(configJSON);
+    // if(localStorage.getItem("accessToken") && localStorage.getItem("idToken")) {
+    //   accessToken = localStorage.getItem("accessToken") || "";
+    //   idToken = localStorage.getItem("idToken") || "";
+    //   configJSON.public.default.headers.accessToken = accessToken;
+    //   configJSON.public.default.headers.idToken = idToken;
+    // }
+    // console.log("configJSON after ");
+    // console.log(configJSON);
     window.sessionStorage.setItem('config', JSON.stringify(configJSON));
     return configJSON;
   }
